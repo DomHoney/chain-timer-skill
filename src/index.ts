@@ -1,5 +1,5 @@
 import {RequestHandler, HandlerInput, SkillBuilders} from 'ask-sdk-core';
-import {RequestEnvelope, Response} from 'ask-sdk-model'
+import {RequestEnvelope, Response} from 'ask-sdk-model';
 
 class LaunchRequestHandler implements RequestHandler {
 
@@ -19,13 +19,10 @@ class LaunchRequestHandler implements RequestHandler {
 
 }
 
-const handler = async function f(envelope: RequestEnvelope, context: any) {
+export const handler = async function f(envelope: RequestEnvelope, context: any) {
     const skill = SkillBuilders.custom().addRequestHandlers(
         new LaunchRequestHandler()
     ).create();
 
     return skill.invoke(envelope, context);
 };
-
-
-export default {"handler": handler}
